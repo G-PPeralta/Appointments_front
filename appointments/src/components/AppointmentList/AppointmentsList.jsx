@@ -26,11 +26,11 @@ export const AppointmentList = () => {
                 </button>
               </td>
               <td>
-                <input type="text" />
-                {' '}
                 <button onClick={ () => deleteAppointment() }>
                   Delete
                 </button>
+                {' '}
+                <input type="text" />
               </td>
             </tr>
           ))}
