@@ -34,5 +34,39 @@ export const useAppointments = () => {
       .finally(() => setLoading(false))
   }
 
-  return { appointments, loading, error, createAppointment }
+  const updateAppointment = (appointment, id) => {
+    setLoading(true)
+    
+    fetch(`http://localhost:3001/appointments/${ id }`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(appointment),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setAppointments([
+          ...appointments,
+          data,
+        ])
+      })
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false))
+  }
+
+  const deleteAppointment = (id) => {
+    setLoading(true)
+    
+    fetch(`http://localhost:3001/appointments/${ id }`, { method: 'DELETE' })
+      .then((response) => response.json())
+      .then((data) => {
+        setAppointments([
+          ...appointments,
+          data,
+        ])
+      })
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false))
+  }
+
+  return { appointments, loading, error, createAppointment, updateAppointment, deleteAppointment }
 }
