@@ -1,10 +1,11 @@
-import { InputFields } from "./components/InputFields";
+import { AppointmentList } from "./components/AppointmentList/AppointmentsList";
+import { InputFields } from "./components/InputFields/InputFields";
 
 function App() {
   return (
     <div>
-      <h1>Hello World</h1>
       <InputFields />
+      <AppointmentList />
     </div>
   );
 }

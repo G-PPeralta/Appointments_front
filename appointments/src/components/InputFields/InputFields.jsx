@@ -1,4 +1,12 @@
+import { useAppointments } from "../../hooks/useAppointments";
+
 export const InputFields = () => {
+  const { createAppointment } = useAppointments()
+
+  const handleCreateAppointment = () => {
+    createAppointment({})
+  }
+
   return (
     <form>
       <input
@@ -13,7 +21,7 @@ export const InputFields = () => {
         type="text"
         placeholder="Insert a description"
       />
-      <button>
+      <button onClick={() => handleCreateAppointment()}>
         Add
       </button>
     </form>
