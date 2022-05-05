@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Modal from "react-modal";
+import Modal from "react-modal"; // https://github.com/reactjs/react-modal
 import { AppointmentsList } from "../components/AppointmentList/AppointmentsList";
 import { InputFields } from "../components/InputFields/InputFields";
 import { useAppointments } from "../hooks/useAppointments";

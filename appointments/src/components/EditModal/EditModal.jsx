@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { StyledButton } from "../AppointmentList/styles";
+import { StyledButton } from "./styles";
 import { InputFields } from "../InputFields/InputFields"
 
 Modal.setAppElement("#root");

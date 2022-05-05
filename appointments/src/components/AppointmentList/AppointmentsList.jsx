@@ -6,9 +6,9 @@ export const AppointmentsList = ({ appointments, onDelete, onEdit }) => {
       <table>
         <thead>
           <tr>
-            <th>Título</th>
-            <th>Data</th>
-            <th>Descrição</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
