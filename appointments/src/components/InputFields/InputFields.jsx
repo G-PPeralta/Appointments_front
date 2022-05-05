@@ -1,16 +1,19 @@
 import { useState } from "react";
-import { useAppointments } from "../../hooks/useAppointments";
+import DateTimePicker from 'react-datetime-picker';
 import { StyledInput, StyledButton } from "./styles";
 
-export const InputFields = () => {
-  const { createAppointment } = useAppointments()
+export const InputFields = ({ onCreate }) => {
   const [title, setTitle] = useState('');
-  const [date, setDate] = useState('');
+  const [time, setTime] = useState(new Date());
   const [description, setDescription] = useState();
 
   const handleCreateAppointment = (event) => {
     event.preventDefault();
-    createAppointment({ title, date, description })
+    onCreate({ 
+      title, 
+      time: time.toISOString(), 
+      description 
+    })
   }
 
   return (
@@ -21,11 +24,9 @@ export const InputFields = () => {
         value={ title }
         onChange={ (event) => setTitle(event.target.value)}
       />
-      <StyledInput
-        type="text"
-        placeholder="Insert a date"
-        value={ date }
-        onChange={ (event) => setDate(event.target.value)}
+      <DateTimePicker
+        value={ time }
+        onChange={ (newTime) => setTime(newTime)}
       />
       <StyledInput
         type="text"

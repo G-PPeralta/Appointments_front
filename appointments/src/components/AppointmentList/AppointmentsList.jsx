@@ -1,36 +1,35 @@
-import { useAppointments } from "../../hooks/useAppointments";
 import { TableContainer, StyledButton, StyledInput } from "./styles";
 
-export const AppointmentList = () => {
-  const { appointments, loading, error, updateAppointment, deleteAppointment } = useAppointments();
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Something went wrong. Try reloading the page</p>;
-
+export const AppointmentsList = ({appointments, onDelete}) => {
   return (
     <TableContainer>
       <table>
         <thead>
-          <th>Título</th>
-          <th>Data</th>
-          <th>Descrição</th>
+          <tr>
+            <th>Título</th>
+            <th>Data</th>
+            <th>Descrição</th>
+          </tr>
         </thead>
         <tbody>
           {appointments &&
             appointments.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.title}</td>
-                <td>{appointment.time}</td>
+                <td>{new Date(appointment.time).toLocaleString()}</td>
                 <td>{appointment.description}</td>
                 <td>
-                  <StyledButton onClick={ () => updateAppointment() }>
+                  <StyledButton
+                    onClick={() => {}}
+                  >
                     Edit
-                  </StyledButton>
-                  {' '}
+                  </StyledButton>{" "}
                   <StyledInput type="text" />
                 </td>
                 <td>
-                  <StyledButton onClick={ () => deleteAppointment() }>
+                  <StyledButton
+                    onClick={() => onDelete(appointment.id)}
+                  >
                     Delete
                   </StyledButton>
                 </td>

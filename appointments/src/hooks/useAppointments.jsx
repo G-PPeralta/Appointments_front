@@ -15,9 +15,7 @@ export const useAppointments = () => {
       .finally(() => setLoading(false))
   }, [])
 
-  const createAppointment = (appointment) => {
-    setLoading(true)
-    
+  const createAppointment = (appointment) => {    
     fetch('http://localhost:3001/appointments', {
         method: 'POST',
         body: JSON.stringify(appointment),
@@ -30,13 +28,9 @@ export const useAppointments = () => {
           data,
         ])
       })
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false))
   }
 
-  const updateAppointment = (appointment, id) => {
-    setLoading(true)
-    
+  const updateAppointment = (appointment, id) => {    
     fetch(`http://localhost:3001/appointments/${ id }`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -49,23 +43,17 @@ export const useAppointments = () => {
           data,
         ])
       })
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false))
   }
 
   const deleteAppointment = (id) => {
-    setLoading(true)
-    
-    fetch(`http://localhost:3001/appointments/${ id }`, { method: 'DELETE' })
-      .then((response) => response.json())
-      .then((data) => {
-        setAppointments([
-          ...appointments,
-          data,
-        ])
+    fetch(`http://localhost:3001/appointments/${ id }`, { 
+      method: 'DELETE' 
+    })
+      .then(() => {
+        setAppointments(
+          appointments.filter(appt => appt.id !== id)
+        )
       })
-      .catch((error) => setError(error))
-      .finally(() => setLoading(false))
   }
 
   return { appointments, loading, error, createAppointment, updateAppointment, deleteAppointment }

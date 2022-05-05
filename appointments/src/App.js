@@ -1,15 +1,13 @@
-import { AppointmentList } from "./components/AppointmentList/AppointmentsList";
-import { InputFields } from "./components/InputFields/InputFields";
-import { GlobalStyle } from "./globalStyles/global"
+import { GlobalStyle } from "./globalStyles/global";
+import { AppointmentsPage } from '../src/pages/AppointmentsPage';
 
 function App() {
   return (
-    <div>
-      <InputFields />
-      <AppointmentList />
+    <>
+      <AppointmentsPage />
       <GlobalStyle />
-    </div>
-  );
+    </>
+  )
 }
 
 export default App;
