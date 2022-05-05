@@ -1,6 +1,6 @@
 import { useState } from "react";
-import DateTimePicker from 'react-datetime-picker';
-import { StyledInput, StyledButton } from "./styles";
+import DateTimePicker from 'react-datetime-picker'; // https://www.npmjs.com/package/react-datetime-picker
+import { StyledForm, StyledInput, StyledButton } from "./styles";
 
 export const InputFields = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
@@ -17,7 +17,7 @@ export const InputFields = ({ onSubmit }) => {
   }
 
   return (
-    <form onSubmit={ handleCreateAppointment }>
+    <StyledForm onSubmit={ handleCreateAppointment }>
       <StyledInput
         type="text"
         placeholder="Enter a title"
@@ -27,6 +27,7 @@ export const InputFields = ({ onSubmit }) => {
       <DateTimePicker
         value={ time }
         onChange={ (newTime) => setTime(newTime)}
+        className="date-picker"
       />
       <StyledInput
         type="text"
@@ -37,6 +38,6 @@ export const InputFields = ({ onSubmit }) => {
       <StyledButton type="submit">
         Add
       </StyledButton>
-    </form>
+    </StyledForm>
   )
 }
