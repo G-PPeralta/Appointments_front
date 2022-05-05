@@ -1,6 +1,6 @@
-import { TableContainer, StyledButton, StyledInput } from "./styles";
+import { TableContainer, StyledButton } from "./styles";
 
-export const AppointmentsList = ({appointments, onDelete}) => {
+export const AppointmentsList = ({ appointments, onDelete, onEdit }) => {
   return (
     <TableContainer>
       <table>
@@ -20,11 +20,10 @@ export const AppointmentsList = ({appointments, onDelete}) => {
                 <td>{appointment.description}</td>
                 <td>
                   <StyledButton
-                    onClick={() => {}}
+                    onClick={() => onEdit(appointment)}
                   >
                     Edit
-                  </StyledButton>{" "}
-                  <StyledInput type="text" />
+                  </StyledButton>
                 </td>
                 <td>
                   <StyledButton

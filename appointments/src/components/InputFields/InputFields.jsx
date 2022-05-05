@@ -2,14 +2,14 @@ import { useState } from "react";
 import DateTimePicker from 'react-datetime-picker';
 import { StyledInput, StyledButton } from "./styles";
 
-export const InputFields = ({ onCreate }) => {
+export const InputFields = ({ onSubmit }) => {
   const [title, setTitle] = useState('');
   const [time, setTime] = useState(new Date());
   const [description, setDescription] = useState();
 
   const handleCreateAppointment = (event) => {
     event.preventDefault();
-    onCreate({ 
+    onSubmit({ 
       title, 
       time: time.toISOString(), 
       description 
