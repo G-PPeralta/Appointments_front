@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useAppointments } from "../../hooks/useAppointments";
+import { StyledInput, StyledButton } from "./styles";
 
 export const InputFields = () => {
   const { createAppointment } = useAppointments()
@@ -14,27 +15,27 @@ export const InputFields = () => {
 
   return (
     <form onSubmit={ handleCreateAppointment }>
-      <input
+      <StyledInput
         type="text"
         placeholder="Enter a title"
         value={ title }
         onChange={ (event) => setTitle(event.target.value)}
       />
-      <input
+      <StyledInput
         type="text"
         placeholder="Insert a date"
         value={ date }
         onChange={ (event) => setDate(event.target.value)}
       />
-      <input
+      <StyledInput
         type="text"
         placeholder="Insert a description"
         value={ description }
         onChange={ (event) => setDescription(event.target.value) }
       />
-      <button type="submit">
+      <StyledButton type="submit">
         Add
-      </button>
+      </StyledButton>
     </form>
   )
 }
