@@ -10,8 +10,6 @@ Essa é uma proposta de solução para o desafio técnico do processo seletivo d
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
 - [Author](#author)
 
 
@@ -45,10 +43,6 @@ Usuários deveriam ser capazes de:
 - Jest
 - [React](https://reactjs.org/) - JS library
 - [Styled-components](https://styled-components.com/) - Styled-Components
-
-### What I learned
-
-Com este projeto pude praticar minhas habilidades básicas de frontend, especialmente com React, integrando um backend.
 
 code highlight:
 
