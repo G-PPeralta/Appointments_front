@@ -34,7 +34,7 @@ Usuários deveriam ser capazes de:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://appointments-ik-frontend.herokuapp.com/)
+- Live Site URL: [Appointments](https://appointments-ik-frontend.herokuapp.com/)
 
 ## My process
 
@@ -42,6 +42,7 @@ Usuários deveriam ser capazes de:
 
 - HTML5 markup
 - CSS custom properties
+- Jest
 - [React](https://reactjs.org/) - JS library
 - [Styled-components](https://styled-components.com/) - Styled-Components
 

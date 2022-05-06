@@ -14,6 +14,8 @@ export const InputFields = ({ appointment, onSubmit }) => {
       time: time.toISOString(), 
       description 
     })
+    setTitle('');
+    setDescription('');
   }
 
   return (
