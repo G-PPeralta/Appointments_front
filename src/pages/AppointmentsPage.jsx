@@ -9,7 +9,7 @@ Modal.setAppElement('#root');
 
 export function AppointmentsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editAppointmentId, setEditAppointmentId] = useState(undefined);
+  const [editAppointment, setEditAppointment] = useState(undefined);
   const {
     appointments,
     loading,
@@ -27,21 +27,22 @@ export function AppointmentsPage() {
       <EditModal
         isModalOpen={isModalOpen}
         onClose={() => {
-          setEditAppointmentId(undefined);
+          setEditAppointment(undefined);
           setIsModalOpen(false);
         }}
         onUpdate={(appt) => {
-          updateAppointment(appt, editAppointmentId);
-          setEditAppointmentId(undefined);
+          updateAppointment(appt, editAppointment);
+          setEditAppointment(undefined);
           setIsModalOpen(false);
         }}
+        appointment={editAppointment}
       />
       <InputFields onSubmit={(appt) => createAppointment(appt)} />
       <AppointmentsList
         appointments={appointments}
         onDelete={(id) => deleteAppointment(id)}
         onEdit={(appt) => {
-          setEditAppointmentId(appt.id);
+          setEditAppointment(appt);
           setIsModalOpen(true);
         }}
       />

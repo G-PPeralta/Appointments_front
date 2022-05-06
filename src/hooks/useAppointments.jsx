@@ -31,8 +31,8 @@ export const useAppointments = () => {
       });
   };
 
-  const updateAppointment = (appointment, id) => {
-    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${id}`, {
+  const updateAppointment = (appointment, editAppointment) => {
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${editAppointment.id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(appointment),
@@ -40,7 +40,7 @@ export const useAppointments = () => {
       .then((response) => response.json())
       .then((data) => {
         setAppointments(
-          appointments.map((appt) => (appt.id !== id ? appt : appointment)),
+          appointments.map((appt) => (appt.id !== editAppointment.id ? appt : appointment)),
         );
       });
   };

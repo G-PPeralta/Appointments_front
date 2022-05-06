@@ -2,10 +2,10 @@ import { useState } from "react";
 import DateTimePicker from 'react-datetime-picker'; // https://www.npmjs.com/package/react-datetime-picker
 import { StyledForm, StyledInput, StyledButton } from "./styles";
 
-export const InputFields = ({ onSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [time, setTime] = useState(new Date());
-  const [description, setDescription] = useState();
+export const InputFields = ({ appointment, onSubmit }) => {
+  const [title, setTitle] = useState(appointment?.title || '');
+  const [time, setTime] = useState((appointment && new Date(appointment.time)) || new Date());
+  const [description, setDescription] = useState(appointment?.description || '');
 
   const handleCreateAppointment = (event) => {
     event.preventDefault();

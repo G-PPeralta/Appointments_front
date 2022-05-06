@@ -4,11 +4,11 @@ import { InputFields } from '../InputFields/InputFields';
 
 Modal.setAppElement('#root');
 
-export function EditModal({ isModalOpen, onClose, onUpdate }) {
+export function EditModal({ isModalOpen, onClose, onUpdate, appointment }) {
   return (
     <Modal isOpen={isModalOpen}>
       <StyledButton onClick={() => onClose()}>Close</StyledButton>
-      <InputFields onSubmit={(appt) => onUpdate(appt)} />
+      <InputFields appointment={appointment} onSubmit={(appt) => onUpdate(appt)} />
     </Modal>
   );
 }

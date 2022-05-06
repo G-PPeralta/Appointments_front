@@ -16,7 +16,7 @@ export function AppointmentsList({ appointments, onDelete, onEdit }) {
             && appointments.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.title}</td>
-                <td>{new Date(appointment.time).toLocaleString()}</td>
+                <td>{new Date(appointment.time).toLocaleString('pt-BR')}</td>
                 <td>{appointment.description}</td>
                 <td>
                   <StyledButton
