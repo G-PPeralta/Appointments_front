@@ -1,15 +1,15 @@
-import { useState } from "react";
-import Modal from "react-modal"; // https://github.com/reactjs/react-modal
-import { AppointmentsList } from "../components/AppointmentList/AppointmentsList";
-import { InputFields } from "../components/InputFields/InputFields";
-import { useAppointments } from "../hooks/useAppointments";
-import { EditModal } from "../components/EditModal/EditModal";
+import { useState } from 'react';
+import Modal from 'react-modal'; // https://github.com/reactjs/react-modal
+import { AppointmentsList } from '../components/AppointmentList/AppointmentsList';
+import { InputFields } from '../components/InputFields/InputFields';
+import { useAppointments } from '../hooks/useAppointments';
+import { EditModal } from '../components/EditModal/EditModal';
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
-export const AppointmentsPage = () => {
+export function AppointmentsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editAppointmentId, setEditAppointmentId] = useState(undefined)
+  const [editAppointmentId, setEditAppointmentId] = useState(undefined);
   const {
     appointments,
     loading,
@@ -27,12 +27,12 @@ export const AppointmentsPage = () => {
       <EditModal
         isModalOpen={isModalOpen}
         onClose={() => {
-          setEditAppointmentId(undefined)
-          setIsModalOpen(false)
+          setEditAppointmentId(undefined);
+          setIsModalOpen(false);
         }}
         onUpdate={(appt) => {
-          updateAppointment(appt, editAppointmentId)
-          setEditAppointmentId(undefined)
+          updateAppointment(appt, editAppointmentId);
+          setEditAppointmentId(undefined);
           setIsModalOpen(false);
         }}
       />
@@ -41,10 +41,10 @@ export const AppointmentsPage = () => {
         appointments={appointments}
         onDelete={(id) => deleteAppointment(id)}
         onEdit={(appt) => {
-          setEditAppointmentId(appt.id)
+          setEditAppointmentId(appt.id);
           setIsModalOpen(true);
         }}
       />
     </>
   );
-};
+}

@@ -1,14 +1,14 @@
-import Modal from "react-modal";
-import { StyledButton } from "./styles";
-import { InputFields } from "../InputFields/InputFields"
+import Modal from 'react-modal';
+import { StyledButton } from './styles';
+import { InputFields } from '../InputFields/InputFields';
 
-Modal.setAppElement("#root");
+Modal.setAppElement('#root');
 
-export const EditModal = ({ isModalOpen, onClose, onUpdate }) => {
+export function EditModal({ isModalOpen, onClose, onUpdate }) {
   return (
     <Modal isOpen={isModalOpen}>
       <StyledButton onClick={() => onClose()}>Close</StyledButton>
       <InputFields onSubmit={(appt) => onUpdate(appt)} />
     </Modal>
   );
-};
+}

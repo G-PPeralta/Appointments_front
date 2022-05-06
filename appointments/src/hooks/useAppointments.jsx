@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 export const useAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(undefined);
 
+  // require('dotenv').config();
+
+  // const URL = process.env.BACKEND_URL;
+
   useEffect(() => {
     setLoading(true);
 
-    fetch("http://localhost:3001/appointments")
+    fetch('https://appointments-api-ik.herokuapp.com/appointments')
       .then((response) => response.json())
       .then((data) => setAppointments(data))
       .catch((error) => setError(error))
@@ -16,10 +20,10 @@ export const useAppointments = () => {
   }, []);
 
   const createAppointment = (appointment) => {
-    fetch("http://localhost:3001/appointments", {
-      method: "POST",
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments`, {
+      method: 'POST',
       body: JSON.stringify(appointment),
-      headers: { "Content-Type": "application/json" },
+      headers: { 'Content-Type': 'application/json' },
     })
       .then((response) => response.json())
       .then((data) => {
@@ -28,22 +32,22 @@ export const useAppointments = () => {
   };
 
   const updateAppointment = (appointment, id) => {
-    fetch(`http://localhost:3001/appointments/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(appointment),
     })
       .then((response) => response.json())
       .then((data) => {
         setAppointments(
-          appointments.map((appt) => (appt.id !== id ? appt : appointment))
+          appointments.map((appt) => (appt.id !== id ? appt : appointment)),
         );
       });
   };
 
   const deleteAppointment = (id) => {
-    fetch(`http://localhost:3001/appointments/${id}`, {
-      method: "DELETE",
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${id}`, {
+      method: 'DELETE',
     }).then(() => {
       setAppointments(appointments.filter((appt) => appt.id !== id));
     });

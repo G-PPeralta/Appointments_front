@@ -1,6 +1,6 @@
-import { TableContainer, StyledButton } from "./styles";
+import { TableContainer, StyledButton } from './styles';
 
-export const AppointmentsList = ({ appointments, onDelete, onEdit }) => {
+export function AppointmentsList({ appointments, onDelete, onEdit }) {
   return (
     <TableContainer>
       <table>
@@ -12,8 +12,8 @@ export const AppointmentsList = ({ appointments, onDelete, onEdit }) => {
           </tr>
         </thead>
         <tbody>
-          {appointments &&
-            appointments.map((appointment) => (
+          {appointments
+            && appointments.map((appointment) => (
               <tr key={appointment.id}>
                 <td>{appointment.title}</td>
                 <td>{new Date(appointment.time).toLocaleString()}</td>
@@ -38,4 +38,4 @@ export const AppointmentsList = ({ appointments, onDelete, onEdit }) => {
       </table>
     </TableContainer>
   );
-};
+}
