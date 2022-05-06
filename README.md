@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Ik Appointments App - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Essa é uma proposta de solução para o desafio técnico do processo seletivo da empresa Ik Solution.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Usuários deveriam ser capazes de:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Criar uma tarefa/appointment com título e data.
+- Utilizar features de CRUD (criar, listar, atualizar e deletar).
 
-### `npm run build`
+### Screenshot of the prototype
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./images/AppointmentApp.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Screenshot of components structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![](./images/Components.png)
 
-### `npm run eject`
+### Links
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Live Site URL: [Add live site URL here](https://appointments-ik-frontend.herokuapp.com/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## My process
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Built with
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- HTML5 markup
+- CSS custom properties
+- [React](https://reactjs.org/) - JS library
+- [Styled-components](https://styled-components.com/) - Styled-Components
 
-## Learn More
+### What I learned
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Com este projeto pude praticar minhas habilidades básicas de frontend, especialmente com React, integrando um backend.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+code highlight:
 
-### Code Splitting
+```ts
+useEffect(() => {
+    setLoading(true);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    fetch('https://appointments-api-ik.herokuapp.com/appointments')
+      .then((response) => response.json())
+      .then((data) => setAppointments(data))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, []);
 
-### Analyzing the Bundle Size
+  const createAppointment = (appointment) => {
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments`, {
+      method: 'POST',
+      body: JSON.stringify(appointment),
+      headers: { 'Content-Type': 'application/json' },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setAppointments([...appointments, data]);
+      });
+  };
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  const updateAppointment = (appointment, editAppointment) => {
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${editAppointment.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(appointment),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setAppointments(
+          appointments.map((appt) => (appt.id !== editAppointment.id ? appt : appointment)),
+        );
+      });
+  };
 
-### Making a Progressive Web App
+  const deleteAppointment = (id) => {
+    fetch(`https://appointments-api-ik.herokuapp.com/appointments/${id}`, {
+      method: 'DELETE',
+    }).then(() => {
+      setAppointments(appointments.filter((appt) => appt.id !== id));
+    });
+  };
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Backend
 
-### Advanced Configuration
+Esse projeto foi totalmente integrado com um backend criado do zero para ele, utilizando-se Node.js, com deploy no Heroku.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Author
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Linkedin - [Gabriel Prates Peralta](https://www.linkedin.com/in/gabriel-pperalta/)
